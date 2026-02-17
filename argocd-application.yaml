@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    # UPDATE: Point to your GitOps manifests repo
+    repoURL: https://github.com/enock-momanyi/apod-manifests.git
+    targetRevision: main
+    path: base
+
+  destination:
+    # UPDATE: Use your cluster URL (or https://kubernetes.default.svc for in-cluster)
+    server: https://kubernetes.default.svc
+    namespace: apod
+
+  syncPolicy:
+    automated:
+      prune: true       # Remove resources deleted from Git
+      selfHeal: true    # Revert manual cluster changes
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 3m
