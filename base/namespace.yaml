@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apod
+  labels:
+    app.kubernetes.io/name: apod
+    app.kubernetes.io/part-of: apod
