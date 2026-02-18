@@ -7,11 +7,6 @@ resources:
 - namespace.yaml
 - deployment.yaml
 - service.yaml
-
-commonLabels:
-  app.kubernetes.io/managed-by: argocd
-
-    # Argo CD Image Updater or your CI pipeline updates this tag:
 images:
 - name: REGION-docker.pkg.dev/GCP_PROJECT_ID/apod-explorer/apod-next
   newTag: latest
