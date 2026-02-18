@@ -4,14 +4,16 @@ kind: Kustomization
 namespace: apod
 
 resources:
-  - namespace.yaml
-  - deployment.yaml
-  - service.yaml
+- namespace.yaml
+- deployment.yaml
+- service.yaml
 
 commonLabels:
   app.kubernetes.io/managed-by: argocd
 
-images:
-  - name: REGION-docker.pkg.dev/GCP_PROJECT_ID/apod-explorer/apod-next
     # Argo CD Image Updater or your CI pipeline updates this tag:
-    newTag: latest
+images:
+- name: REGION-docker.pkg.dev/GCP_PROJECT_ID/apod-explorer/apod-next
+  newTag: latest
+- name: europe-west1-docker.pkg.dev/project-8941b0d3-e922-4da2-a3c/apod-explorer/apod-next
+  newTag: "31"
