@@ -26,7 +26,7 @@ spec:
       containers:
         - name: apod
           # UPDATE: Replace <REGION>, <GCP_PROJECT_ID>, and <TAG> with your actual values
-          image: europe-west1-docker.pkg.dev/project-8941b0d3-e922-4da2-a3c/apod/apod:27
+          image: europe-west1-docker.pkg.dev/project-8941b0d3-e922-4da2-a3c/apod-explorer/apod:27
           ports:
             - name: http
               containerPort: 3000
